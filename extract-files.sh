@@ -14,7 +14,7 @@ fi
 
 set -e
 
-export DEVICE=waffle
+export DEVICE=corvette
 export DEVICE_COMMON=sm8650-common
 export VENDOR=oneplus
 

@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_waffle.mk
+    $(LOCAL_DIR)/lineage_corvette.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_waffle-user \
-    lineage_waffle-userdebug \
-    lineage_waffle-eng
+    lineage_corvette-user \
+    lineage_corvette-userdebug \
+    lineage_corvette-eng
