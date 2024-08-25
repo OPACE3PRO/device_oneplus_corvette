@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_corvette.mk
+    $(LOCAL_DIR)/yaap_corvette.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_corvette-user \
-    lineage_corvette-userdebug \
-    lineage_corvette-eng
+    yaap_corvette-user \
+    yaap_corvette-userdebug \
+    yaap_corvette-eng
