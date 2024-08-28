@@ -12,6 +12,9 @@ DEVICE_PATH := device/oneplus/corvette
 # Assert
 TARGET_OTA_ASSERT_DEVICE := OP5D06L1
 
+# Audio
+BOARD_USES_ALSA_AUDIO := true
+
 # Display
 TARGET_SCREEN_DENSITY := 640
 
