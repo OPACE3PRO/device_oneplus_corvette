@@ -85,6 +85,10 @@ odm/etc/camera/config/sr_params.xml
 odm/etc/camera/config/video_beauty_default_config
 odm/etc/camera/settings_fdc.txt
 odm/etc/camera/settings_fdc_lite.txt
+odm/firmware/sipa.bin
+odm/lib64/libremosaic_wrapper.so
+vendor/lib64/libRGBC.so
+vendor/lib64/libSonyIMX471RmscLibrary.so
 
 # Display (Pixelworks)
 odm/etc/iris_configs.xml
