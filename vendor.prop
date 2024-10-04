@@ -1,6 +1,10 @@
 # Bluetooth
 bluetooth.device.default_name=OnePlus Ace 3 Pro
 
+# Fingerprint
+ro.vendor.fingerprint.type=udfps_optical
+ro.vendor.fingerprint.sensor_location=632|2026|98
+
 # Graphics
 ro.surface_flinger.set_idle_timer_ms=250
 ro.surface_flinger.set_touch_timer_ms=300
