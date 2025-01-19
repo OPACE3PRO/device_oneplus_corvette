@@ -15,6 +15,9 @@ TARGET_OTA_ASSERT_DEVICE := OP5D06L1
 # Display
 TARGET_SCREEN_DENSITY := 540
 
+# Fingerprint
+TARGET_SURFACEFLINGER_UDFPS_LIB := //device/oneplus/corvette:libudfps_extension.corvette
+
 # Kernel
 TARGET_KERNEL_CONFIG += vendor/oplus/corvette.config
 
