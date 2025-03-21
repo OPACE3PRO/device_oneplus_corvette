@@ -13,7 +13,7 @@ DEVICE_PATH := device/oneplus/corvette
 TARGET_OTA_ASSERT_DEVICE := OP5D06L1
 
 # Display
-TARGET_SCREEN_DENSITY := 640
+TARGET_SCREEN_DENSITY := 540
 
 # Kernel
 TARGET_KERNEL_CONFIG += vendor/oplus/corvette.config
