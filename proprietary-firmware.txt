@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from OnePlus 12 (CPH2581_15.0.0.510(EX01)).
+## are from OnePlus Ace 3 Pro (PJX110_15.0.0.600(CN01)).
 
 abl.img;AB
 aop.img;AB
