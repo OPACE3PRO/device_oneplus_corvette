@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-ifeq ($(TARGET_DEVICE),waffle)
+ifeq ($(TARGET_DEVICE),corvette)
 
 include $(CLEAR_VARS)
 

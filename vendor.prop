@@ -2,10 +2,10 @@
 vendor.sensors.als_correction.grabrect=968 0 1072 104
 
 # Bluetooth
-bluetooth.device.default_name=OnePlus 12
+bluetooth.device.default_name=OnePlus Ace 3 Pro
 
 # Graphics
 ro.surface_flinger.set_touch_timer_ms=200
 
 # USB
-vendor.usb.product_string=OnePlus 12
+vendor.usb.product_string=OnePlus Ace 3 Pro
