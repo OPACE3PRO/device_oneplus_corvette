@@ -12,6 +12,9 @@ odm/lib64/lib_lvacfs.so
 odm/lib64/liblvacfs_wrapper.so
 odm/lib64/libtfa98xx.so
 
+# Audio firmware
+odm/firmware/sipa.bin
+
 # Audio params
 odm/etc/lvacfs_params/2mic/LVACFS_Calibration360_2mic.dat
 odm/etc/lvacfs_params/2mic/LVACFS_Configuration.txt
