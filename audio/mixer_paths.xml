@@ -78,6 +78,7 @@
     <ctl name="VA SMIC MUX3" value="ZERO" />
     <ctl name="VA_DEC0 MODE" value="ADC_DEFAULT" />
     <ctl name="ADC2_BCS Disable" value="0" />
+    <ctl name="LPI Enable" value="0" />
     <ctl name="ADC1_MIXER Switch" value="0" />
     <ctl name="ADC2_MIXER Switch" value="0" />
     <ctl name="ADC3_MIXER Switch" value="0" />
@@ -195,10 +196,13 @@
     <ctl name="IIR0 INP2 MUX" value="ZERO" />
     <ctl name="IIR0 INP3 MUX" value="ZERO" />
 
-    <!-- TFA controls -->
-    <ctl name="TFA_CHIP_SELECTOR" value="0" />
-    <ctl name="TFA Profile" value="speaker" />
-    <ctl name="TFA_CHECK_FEEDBACK" value="Off" />
+    <!-- SIPA controls -->
+    <ctl name="SpkrLeft Sipa Mute" value="1" />
+    <ctl name="SpkrRight Sipa Mute" value="1" />
+    <ctl name="SpkrLeft Sipa Audio Scene" value="Playback" />
+    <ctl name="SpkrRight Sipa Audio Scene" value="Playback" />
+    <ctl name="SpkrLeft SIA_CHECK_FEEDBACK" value="Off" />
+    <ctl name="SpkrRight SIA_CHECK_FEEDBACK" value="Off" />
 
     <ctl name="MBHC ChMap" value="ZERO" />
     <ctl name="BCS Channel" value="CH0" />
@@ -225,7 +229,7 @@
     <ctl name="LPI PCM Logging Enable" value="0" />
 
     <!-- OPLUS_FEATURE_RINGTONE_HAPTIC Add for set haptics vmax value -->
-    <ctl name="Haptics Amplitude Step" value="156" />
+    <ctl name="Haptics Amplitude Step" value="147" />
     <!-- Codec controls end -->
 
     <!-- defaults for mmap record -->
@@ -347,9 +351,12 @@
     </path>
 
     <path name="speaker">
-        <ctl name="TFA_CHIP_SELECTOR" value="3" />
-        <ctl name="TFA Profile" value="speaker" />
-        <ctl name="TFA_CHECK_FEEDBACK" value="On" />
+        <ctl name="SpkrRight Sipa Mute" value="0" />
+        <ctl name="SpkrLeft Sipa Mute" value="0" />
+        <ctl name="SpkrLeft Sipa Audio Scene" value="Playback" />
+        <ctl name="SpkrRight Sipa Audio Scene" value="Playback" />
+        <ctl name="SpkrLeft SIA_CHECK_FEEDBACK" value="On" />
+        <ctl name="SpkrRight SIA_CHECK_FEEDBACK" value="On" />
     </path>
 
     <path name="speaker-prot">
@@ -562,8 +569,8 @@
     </path>
 
     <path name="handset">
-        <ctl name="TFA_CHIP_SELECTOR" value="1" />
-        <ctl name="TFA Profile" value="receiver" />
+        <ctl name="SpkrLeft Sipa Mute" value="0" />
+        <ctl name="SpkrLeft Sipa Audio Scene" value="Receiver" />
     </path>
 
     <path name="handset-mic">
@@ -624,10 +631,10 @@
         <ctl name="TX2 MODE" value="ADC_NORMAL" />
         <ctl name="TX1 MODE" value="ADC_NORMAL" />
         <ctl name="TX0 MODE" value="ADC_NORMAL" />
-        <ctl name="TX_DEC0 Volume" value="84" />
         <ctl name="TX_DEC1 Volume" value="84" />
         <ctl name="TX_DEC2 Volume" value="84" />
         <ctl name="TX_DEC3 Volume" value="84" />
+        <ctl name="TX_DEC5 Volume" value="84" />
         <ctl name="ADC1 Volume" value="14" />
         <ctl name="ADC2 Volume" value="0" />
         <ctl name="ADC3 Volume" value="14" />
@@ -637,8 +644,8 @@
     </path>
 
     <path name="ultrasound-handset">
-        <ctl name="TFA_CHIP_SELECTOR" value="1" />
-        <ctl name="TFA Profile" value="receiver" />
+        <ctl name="SpkrLeft Sipa Mute" value="0" />
+        <ctl name="SpkrLeft Sipa Audio Scene" value="Receiver" />
     </path>
 
     <path name="ultrasound-handset-vbat">
@@ -919,18 +926,22 @@
     </path>
 
     <path name="va-mic-mono-lpi">
+        <ctl name="LPI Enable" value="1" />
         <path name="va-mic-mono" />
     </path>
 
     <path name="va-mic-dmic-lpi">
+        <ctl name="LPI Enable" value="1" />
         <path name="va-mic-dmic" />
     </path>
 
     <path name="va-mic-tmic-lpi">
+        <ctl name="LPI Enable" value="1" />
         <path name="va-mic-tmic" />
     </path>
 
     <path name="va-mic-qmic-lpi">
+        <ctl name="LPI Enable" value="1" />
         <path name="va-mic-qmic" />
     </path>
 
@@ -1288,18 +1299,18 @@
     </path>
 
     <path name="mmi-mic-seal-receiver">
-        <ctl name="TFA_CHIP_SELECTOR" value="1" />
-        <ctl name="TFA Profile" value="speaker" />
+        <ctl name="SpkrLeft Sipa Mute" value="0" />
+        <ctl name="SpkrLeft Sipa Audio Scene" value="Playback" />
     </path>
 
     <path name="mmi-speaker-right">
-        <ctl name="TFA_CHIP_SELECTOR" value="2" />
-        <ctl name="TFA Profile" value="speaker" />
+        <ctl name="SpkrRight Sipa Mute" value="0" />
+        <ctl name="SpkrRight Sipa Audio Scene" value="Playback" />
     </path>
 
     <path name="mmi-speaker-left">
-        <ctl name="TFA_CHIP_SELECTOR" value="1" />
-        <ctl name="TFA Profile" value="speaker" />
+        <ctl name="SpkrLeft Sipa Mute" value="0" />
+        <ctl name="SpkrLeft Sipa Audio Scene" value="Playback" />
     </path>
 
     <path name="main-mic-test">

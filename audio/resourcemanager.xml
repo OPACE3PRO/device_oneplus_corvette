@@ -78,10 +78,22 @@
         <!-- Jie.Du@MULTIMEDIA.AUDIODRIVER, 2023/02/22, add for support call record in ocar mode -->
         <param key="ocar_mode_support" value="true"/>
         <!-- Nan.Zhong@MULTIMEDIA.AUDIODRIVER.SMARTPA, 2023/04/28, add for speaker protection -->
+        <param key="speaker_ringtone_ckv" value="true"/>
         <param key="speaker_voip_ckv" value="true"/>
         <param key="speaker_auto_calibration" value="true"/>
         <!-- YeWenliang@MULTIMEDIA.AUDIODRIVER, 2023/06/12, add for disable upd proximity -->
         <param key="upd_proximity_enable" value ="false" />
+        <!-- Huangzilong@MULTIMEDIA.AUDIODRIVER, 2022/09/20, Add for 4ch aec -->
+        <param key="oplus_4ch_aec_enable" value="true"/>
+        <param key="oplus_ref_channel_count" value ="2" />
+        <param key="oplus_speaker_id" value ="4" />
+        <!-- liuhaituo@MULTIMEDIA.AUDIODRIVER, 2024/01/10, Add for Distinguish between old and new version interfaces -->
+        <param key="sipa_algo_version" value ="v3" />
+        <!--liuhaituo@MULTIMEDIA.AUDIODRIVER.HAL. 2024/04/02, add for opve algo -->
+        <param key="oplus_use_voice_opve" value="true"/>
+        <param key="oplus_opve_err_fb" value="true"/>
+        <param key="oplus_audio_daemon_pal" value="true"/>
+        <param key="oplus_audio_daemon_agm" value="true"/>
     </config_params>
     <config_volume>
         <use_volume_set_param>1</use_volume_set_param>
@@ -125,6 +137,14 @@
         <bat_to_dblvl_map battery="20" level="2"/>
     </smartpa_gain_mapping>
     <!-- Minyi.Hu@MULTIMEDIA.AUDIODRIVER, 2021/12/21, Add for SmartpaGainAdjust-->
+    <pa_vdd_gain_mapping>
+        <vdd_to_gain_map vdd_threshold="3800000" cmd="7200000,7600000"/>  <!--  vdd > 3.8 -->
+        <vdd_to_gain_map vdd_threshold="3720000" cmd="6100000,6500000"/>  <!-- 3.8 vdd > 3.72 89 -1db -->
+        <vdd_to_gain_map vdd_threshold="3600000" cmd="5200000,5600000"/>  <!-- 3.72 > vdd > 3.6 75 -2db -->
+        <vdd_to_gain_map vdd_threshold="3450000" cmd="4100000,4500000"/>  <!-- 3.6 > vdd > 3.45 63 -3db -->
+        <vdd_to_gain_map vdd_threshold="3350000" cmd="3300000,3700000"/>  <!-- 3.45 > vdd > 3.35 53 -3.75db -->
+        <vdd_to_gain_map vdd_threshold="0" cmd="3050000,3450000"/>  <!-- 3.35 > vdd > 3.15 -4.5db -->
+    </pa_vdd_gain_mapping>
     <config_voice>
         <vsid>0xB3000000</vsid>
         <loopbackDelay>1000</loopbackDelay>
@@ -273,10 +293,6 @@
                 <name>PAL_STREAM_VOIP_TX</name>
                 <priority>2</priority>
                 <ec_enable>1</ec_enable>
-                <custom-config key="HAC">
-                    <channels>2</channels>
-                    <snd_device_name>voice-dmic-ef-hac</snd_device_name>
-                </custom-config>
             </usecase>
             <usecase>
                 <name>PAL_STREAM_VOICE_CALL</name>
@@ -303,10 +319,6 @@
                 <custom-config key="quad-mic">
                     <channels>4</channels>
                     <snd_device_name>quad-mic</snd_device_name>
-                </custom-config>
-                <custom-config key="HAC">
-                    <channels>2</channels>
-                    <snd_device_name>voice-dmic-ef-hac</snd_device_name>
                 </custom-config>
             </usecase>
             <usecase>
@@ -342,6 +354,12 @@
                 <custom-config key="unprocessed-hdr-mic-inverted-portrait">
                     <channels>4</channels>
                     <snd_device_name>unprocessed-hdr-mic-inverted-portrait</snd_device_name>
+                </custom-config>
+            </usecase>
+            <usecase>
+                <name>PAL_STREAM_VOICE_RECOGNITION</name>
+                <custom-config key="4ch-aec-mic">
+                    <ec_enable>1</ec_enable>
                 </custom-config>
             </usecase>
             <ec_rx_device>
@@ -1232,6 +1250,14 @@
                 </policies>
         </in_stream>
         <in_stream>
+            <name>PAL_STREAM_VOICE_RECOGNITION</name>
+                <policies>
+                    <ec_ref>
+                        <disabled_stream>PAL_STREAM_GENERIC</disabled_stream>
+                    </ec_ref>
+                </policies>
+        </in_stream>
+        <in_stream>
             <name>PAL_STREAM_VOICE_UI</name>
                 <policies>
                     <ec_ref>
@@ -1481,6 +1507,13 @@
                 <param ec_ref="true" />
             </capture_profile>
             <capture_profile name="DUAL_MIC_48KHZ_16BIT_FFECNS">
+                <param sample_rate="48000" />
+                <param channels="2" />
+                <param bit_width="16" />
+                <param snd_name="va-mic-dmic" />
+                <param ec_ref="true" />
+            </capture_profile>
+            <capture_profile name="DUAL_MIC_48KHZ_16BIT_BREENO_ECNS">
                 <param sample_rate="48000" />
                 <param channels="2" />
                 <param bit_width="16" />
@@ -1806,7 +1839,7 @@
                 <name>HOTWORD_VOICE_UI</name>
                 <param vendor_uuid="7038ddc8-30f2-11e6-b0ac-40a8f03d3f15" />
                 <param interface_plugin_lib="libhotword_intf.so" />
-                <param get_module_version="true" />
+                <param get_module_version="false" />
                 <param merge_first_stage_sound_models="false" />
                 <param capture_keyword="2000" />
                 <param client_capture_read_delay="2000" />
@@ -1862,6 +1895,41 @@
                         <param module_type="CUSTOM1" />
                         <param load_sound_model_ids="0xC0000008, 0x0800104C" />
                         <param custom_config_ids="0xC0000008, 0x08001049" />
+                        <param buffering_config_ids="0xC0000008, 0x08001044" />
+                        <param engine_reset_ids="0xC0000008, 0x08001051" />
+                    </first_stage_module_params>
+                </sound_model_info>
+            </stream_config>
+            <!-- Breeno Voice UI-->
+            <stream_config>
+                <name>BREENO_VOICE_UI</name>
+                <!-- NOTE: Customer need to replace with their own uuid and match with sound model -->
+                <param vendor_uuid="68ac2d41-e861-11e4-95ed-0002a5d5c51c" />
+                <param interface_plugin_lib="libcustomva_intf.so" />
+                <param merge_first_stage_sound_models="false" />
+                <!-- Profile specific data which the algorithm can support -->
+                <param capture_keyword="2000" /> <!-- Default history buffer length -->
+                <param client_capture_read_delay="2000" /> <!-- reserved buffer duration for rt data -->
+                <param pre_roll_duration="500" /> <!-- Default preroll duration -->
+                <!-- durations in us -->
+                <param kw_start_tolerance="360000" />
+                <param kw_end_tolerance="240000" />
+                <param data_before_kw_start="360000" />
+                <param data_after_kw_end="480000" />
+                <param sample_rate="16000" />
+                <param bit_width="16" />
+                <!-- Module output channels -->
+                <param out_channels="2" />
+                <operating_modes>
+                    <low_power capture_profile_handset="DUAL_MIC_16KHZ_16BIT_RAW_LPI" capture_profile_headset="SINGLE_MIC_16KHZ_16BIT_HEADSET_CUSTOM_NS" />
+                    <high_performance capture_profile_handset="DUAL_MIC_48KHZ_16BIT_BREENO_ECNS" capture_profile_headset="SINGLE_MIC_48KHZ_16BIT_HEADSET_CUSTOM_ECNS" />
+                    <high_performance_and_charging capture_profile_handset="DUAL_MIC_48KHZ_16BIT_BREENO_ECNS" capture_profile_headset="SINGLE_MIC_48KHZ_16BIT_HEADSET_CUSTOM_ECNS" />
+                </operating_modes>
+                <sound_model_info>
+                    <first_stage_module_params>
+                        <param module_type="CUSTOM1" />
+                        <param load_sound_model_ids="0xC0000008, 0x0800104C" />
+                        <param custom_config_ids="0xC0000008, 0x0800119B" />
                         <param buffering_config_ids="0xC0000008, 0x08001044" />
                         <param engine_reset_ids="0xC0000008, 0x08001051" />
                     </first_stage_module_params>
