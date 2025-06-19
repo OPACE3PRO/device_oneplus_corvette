@@ -1,6 +1,3 @@
-# ALS
-vendor.sensors.als_correction.grabrect=968 0 1072 104
-
 # Bluetooth
 bluetooth.device.default_name=OnePlus Ace 3 Pro
 
