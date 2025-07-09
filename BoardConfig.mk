@@ -19,7 +19,7 @@ TARGET_SCREEN_DENSITY := 540
 $(call soong_config_set,surfaceflinger,udfps_lib,//device/oneplus/corvette:libudfps_extension.corvette)
 
 # Kernel
-TARGET_KERNEL_CONFIG += vendor/oplus/corvette.config
+TARGET_KERNEL_ADDITIONAL_FLAGS += CONFIG_CORVETTE_DTB=y
 
 # Partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 16638803968
