@@ -12,6 +12,13 @@ odm/lib64/lib_lvacfs.so
 odm/lib64/liblvacfs_wrapper.so
 odm/lib64/libtfa98xx.so
 
+# Audio configs
+odm/etc/mixer_paths.xml
+odm/etc/resourcemanager.xml
+odm/etc/usecaseKvManager.xml
+vendor/etc/card-defs.xml
+vendor/etc/usecaseKvManager.xml
+
 # Audio firmware
 odm/firmware/sipa.bin
 
