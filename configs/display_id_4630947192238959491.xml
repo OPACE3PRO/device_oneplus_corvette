@@ -7,15 +7,15 @@
             <density>450</density>
         </density>
         <density>
-            <height>1440</height>
-            <width>3168</width>
+            <height>1264</height>
+            <width>2780</width>
             <density>560</density>
         </density>
     </densityMapping>
   <highBrightnessMode enabled="true">
     <transitionPoint>0.85</transitionPoint>
     <minimumHdrPercentOfScreen>0.1</minimumHdrPercentOfScreen>
-    <minimumLux>4500</minimumLux>
+    <minimumLux>10000</minimumLux>
     <timing>
       <timeWindowSecs>0</timeWindowSecs>  // Window in which we restrict HBM.
       <timeMaxSecs>0</timeMaxSecs>         // Maximum time of HBM allowed in that window.
@@ -25,16 +25,12 @@
     <allowInLowPowerMode>true</allowInLowPowerMode>
     <sdrHdrRatioMap>
       <point>
-        <sdrNits>6.0</sdrNits>
-        <hdrRatio>10.0</hdrRatio>
+        <sdrNits>2.000</sdrNits>
+        <hdrRatio>8.000</hdrRatio>
       </point>
       <point>
-        <sdrNits>500</sdrNits>
-        <hdrRatio>2.1</hdrRatio>
-      </point>
-      <point>
-        <sdrNits>800</sdrNits>
-        <hdrRatio>1.2</hdrRatio>
+        <sdrNits>500.000</sdrNits>
+        <hdrRatio>1.5</hdrRatio>
       </point>
     </sdrHdrRatioMap>
   </highBrightnessMode>
