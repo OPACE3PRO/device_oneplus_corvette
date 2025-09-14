@@ -4,6 +4,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Partitions
+BOARD_SUPER_PARTITION_SIZE := 16642998272
+
 # Include the common OEM chipset BoardConfig.
 include device/oneplus/sm8650-common/BoardConfigCommon.mk
 
@@ -17,10 +20,6 @@ TARGET_SCREEN_DENSITY := 540
 
 # Kernel
 TARGET_KERNEL_ADDITIONAL_FLAGS += CONFIG_CORVETTE_DTB=y
-
-# Partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 16638803968
-BOARD_SUPER_PARTITION_SIZE := 16642998272
 
 # Properties
 TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system_ext.prop
