@@ -5,4 +5,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_corvette.mk
+    $(LOCAL_DIR)/infinity_corvette.mk
