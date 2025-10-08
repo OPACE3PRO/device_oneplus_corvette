@@ -24,6 +24,9 @@ $(call soong_config_set,camera,disable_torch_control,true)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/display_id_4630947192238959491.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630947192238959491.xml
 
+# GcamGo
+$(call inherit-product, vendor/gcamp/config.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage
